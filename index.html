@@ -41,10 +41,16 @@
 					  <tr>
 					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>					    
 					  </tr>
-					  <tr ng-repeat="data in selectedTable.data">
+					  <tr ng-repeat="data in selectedTable.data" ng-show="shouldDisplay(data)">
 					    <td ng-repeat="value in data">{{value}}</td>					    
 					  </tr>					  
 					</table>
+
+					<h2>Select</h2>
+					<input class="form-control" type='text' ng-model='constraint'> 
+					<br>
+					<button class='btn btn-success' ng-click='applyConstraint(constraint)'>Apply</button>
+
 				</div>
 
 			</div>
