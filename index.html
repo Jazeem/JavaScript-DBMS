@@ -37,19 +37,24 @@
 
 
 					<h2>{{selectedTable.name}}</h2>
+
 					<table class='table table-striped'>
 					  <tr>
 					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>					    
 					  </tr>
 					  <tr ng-repeat="data in selectedTable.data" ng-show="shouldDisplay(data)">
 					    <td ng-repeat="value in data">{{value}}</td>					    
-					  </tr>					  
+					  </tr>			  
 					</table>
 
 					<h2>Select</h2>
 					<input class="form-control" type='text' ng-model='constraint'> 
 					<br>
 					<button class='btn btn-success' ng-click='applyConstraint(constraint)'>Apply</button>
+
+					<h2>Insert</h2>
+					<input class="form-control" type="text" ng-model="tupleToInsert"><br/>
+					<button class="btn btn-success" ng-click="insertTuple()">Insert</button>
 
 				</div>
 
