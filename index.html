@@ -46,16 +46,16 @@
 					    <td ng-repeat="value in data">{{value}}</td>					    
 					  </tr>			  
 					</table>
+					<div ng-show='selectedTable'>
+						<h2>Select</h2>
+						<input class="form-control" type='text' ng-model='constraint'> 
+						<br>
+						<button class='btn btn-success' ng-click='applyConstraint(constraint)'>Apply</button>
 
-					<h2>Select</h2>
-					<input class="form-control" type='text' ng-model='constraint'> 
-					<br>
-					<button class='btn btn-success' ng-click='applyConstraint(constraint)'>Apply</button>
-
-					<h2>Insert</h2>
-					<input class="form-control" type="text" ng-model="tupleToInsert"><br/>
-					<button class="btn btn-success" ng-click="insertTuple()">Insert</button>
-
+						<h2>Insert</h2>
+						<input class="form-control" type="text" ng-model="tupleToInsert"><br/>
+						<button class="btn btn-success" ng-click="insertTuple()">Insert</button>
+					</div>
 				</div>
 
 			</div>
