@@ -37,14 +37,20 @@
 
 
 					<h2>{{selectedTable.name}}</h2>
+
 					<table class='table table-striped'>
 					  <tr>
 					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>					    
 					  </tr>
 					  <tr ng-repeat="data in selectedTable.data">
 					    <td ng-repeat="value in data">{{value}}</td>					    
-					  </tr>					  
+					  </tr>			  
 					</table>
+					<form>
+						<input class="form-control" type="text" ng-model="tupleToInsert"><br/>
+						<button class="btn btn-success" ng-click="insertTuple()">INSERT TUPLE</button>
+					</form>
+
 				</div>
 
 			</div>
