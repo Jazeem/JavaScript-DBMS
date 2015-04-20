@@ -1,0 +1,17 @@
+	"name": "Marks",
+	"schema": [
+	{
+		"field": "RollNo",
+		"type": "int",
+		"foreign_key": "Students"
+	},
+	{
+		"field": "Maths",
+		"type": "int"
+	},
+	{
+		"field": "Physics",
+		"type": "int"
+		
+	}],
+	"primary_key": "RollNo"

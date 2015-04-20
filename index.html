@@ -35,7 +35,10 @@
 					  <a href="#" ng-click="displayTable(table)" ng-repeat="table in data" class="list-group-item">{{table.name}}</a>				  
 					</div>
 
-
+					<h2>Insert Table</h2>
+					<input class="form-control" type='text' ng-model='tableQuery'> 
+					<br>
+					<button class='btn btn-success' ng-click='addTable()'>Add</button>
 					<h2>{{selectedTable.name}}</h2>
 
 					<table class='table table-striped'>
@@ -55,6 +58,11 @@
 						<h2>Insert</h2>
 						<input class="form-control" type="text" ng-model="tupleToInsert"><br/>
 						<button class="btn btn-success" ng-click="insertTuple()">Insert</button>
+
+						<br>
+						<br>
+						
+						<button class="btn btn-danger" ng-click="dropTable()">Drop Table</button>						
 					</div>
 				</div>
 
