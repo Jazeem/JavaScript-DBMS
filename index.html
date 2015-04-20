@@ -28,11 +28,28 @@
 					<h2><span class="fa fa-server"></span> JavaScript DBMS</h2>
 					<p>An attempt to develop a Relational Database Management System as an AngularJS service, which can be integrated to web applications. Similar to <a href='http://www.taffydb.com/'>TaffyDB</a>.</p>
 					<p>For ease of use, this page is developed with a Graphical User Interface for the DBMS operations.</p>	
+					<br>
+					<h2>Tables</h2>
 					<br>				
+					<div class="list-group">
+					  <a href="#" ng-click="displayTable(table)" ng-repeat="table in data" class="list-group-item">{{table.name}}</a>				  
+					</div>
 
+
+					<h2>{{selectedTable.name}}</h2>
+					<table class='table table-striped'>
+					  <tr>
+					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>					    
+					  </tr>
+					  <tr ng-repeat="data in selectedTable.data">
+					    <td ng-repeat="value in data">{{value}}</td>					    
+					  </tr>					  
+					</table>
 				</div>
+
 			</div>
 			<div style="height:40px;"></div>
+
 		</div>
 	</body>
 </html>

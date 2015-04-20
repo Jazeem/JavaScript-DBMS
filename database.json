@@ -1,0 +1,58 @@
+[{
+	"name": "Students",
+	"schema": [
+	{
+		"field": "Name",
+		"type": "string"
+	},
+	{
+		"field": "RollNo",
+		"type": "int"
+	},
+	{
+		"field": "Dept",
+		"type": "string",
+		"foreign_key": "Departments"
+	}],
+	"primary_key": "RollNo",
+	"data": [
+	[
+		"Jazeem",
+		"152",
+		"CS"
+	],
+	[
+		"Jishnu",
+		"223",
+		"ME"
+	],
+	[
+		"Nithin",
+		"500",
+		"CS"
+	]
+	] 
+},
+{
+	"name": "Departments",
+	"schema": [
+	{
+		"field": "ID",
+		"type": "string"
+	},
+	{
+		"field": "Name",
+		"type": "string"
+	}],
+	"primary_key": "ID",
+	"data": [
+	[
+		"CS",
+		"Computer Science and Engineering"		
+	],
+	[
+		"ME",
+		"Mechanical Engineering"		
+	]
+	] 
+}]
