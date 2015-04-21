@@ -5,7 +5,10 @@ JDBMS.controller('MainCtrl',function($scope, $http){
     $scope.data = data;
 
     $scope.tupleToInsert;
-
+    $scope.tupletoUpdate;
+    $scope.attrIndex;
+    $scope.updateValue;
+    $scope.oldValue;
   	});
 	$scope.displayTable = function(table){
 		$scope.selectedTable = table;
@@ -69,5 +72,59 @@ JDBMS.controller('MainCtrl',function($scope, $http){
 			}			
 		}
 		$scope.selectedTable = '';
+	}
+	$scope.setUpdateField = function(tuple,col_no){
+		$scope.tupletoUpdate = tuple;
+		$scope.attrIndex = col_no;
+	}
+	$scope.getPrimaryKeyIndex = function(table){//return table.primary_key;
+		for(var i=0;i<table.schema.length;i++)
+		{
+			if(table.schema[i].field === table.primary_key)
+			{
+				return i;
+			}
+		};
+	}
+	$scope.updateOtherTables = function(operation){
+		
+		for(var i=0;i<$scope.data.length;i++)
+			{
+				for(var j=0; j<$scope.data[i].schema.length; j++)
+				{
+					if($scope.data[i].schema[j].hasOwnProperty('foreign_key') && $scope.data[i].schema[j].foreign_key === $scope.selectedTable.name)
+					{
+
+						for(var k=$scope.data[i].data.length-1;k>=0;k--)
+						{
+							if($scope.data[i].data[k][j] === $scope.oldValue)
+							{
+								if(operation == "update")
+								{
+								$scope.data[i].data[k][j] = $scope.updateValue;
+								}
+								else
+								{
+									$scope.data[i].data.splice(k,1);
+								}
+							}
+						}
+					}
+				}
+			}
+		
+	}
+	$scope.update = function(){
+		$scope.oldValue = $scope.tupletoUpdate[$scope.attrIndex];
+		$scope.tupletoUpdate[$scope.attrIndex] = $scope.updateValue;
+		if($scope.getPrimaryKeyIndex($scope.selectedTable) == $scope.attrIndex)
+		{
+			$scope.updateOtherTables("update");	
+		}
+	}
+	$scope.deleteTuples = function(index){
+		$scope.oldValue = $scope.selectedTable.data[index][$scope.getPrimaryKeyIndex($scope.selectedTable)];
+		$scope.selectedTable.data.splice(index,1);
+		$scope.updateOtherTables("delete");
 	}
 });
