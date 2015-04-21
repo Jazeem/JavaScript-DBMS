@@ -45,7 +45,7 @@
 					<table class='table table-hover'>
 					  <tr>
 					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>
-					  	<th ng-show='selectedTable'>Delete Tuple</th>					    
+					  	<th ng-show='selectedTable'></th>					    
 					  </tr>
 					  <tr ng-repeat="data in selectedTable.data" ng-show="shouldDisplay(data)">
 					    <td ng-repeat="value in data" ng-click="setUpdateField(data,$index)">{{value}}</td>	
