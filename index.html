@@ -38,12 +38,16 @@
 
 					<h2>{{selectedTable.name}}</h2>
 
-					<table class='table table-striped'>
+					<table class='table table-hover'>
 					  <tr>
-					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>					    
+					  	<th ng-repeat="heading in selectedTable.schema">{{heading.field}}</th>
+					  	<th ng-show='selectedTable'>Delete Tuple</th>					    
 					  </tr>
 					  <tr ng-repeat="data in selectedTable.data" ng-show="shouldDisplay(data)">
-					    <td ng-repeat="value in data">{{value}}</td>					    
+					    <td ng-repeat="value in data" ng-click="setUpdateField(data,$index)">{{value}}</td>	
+					    <td>
+					    	<button ng-click="deleteTuples($index)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+					    </td>				    
 					  </tr>			  
 					</table>
 					<div ng-show='selectedTable'>
@@ -55,6 +59,10 @@
 						<h2>Insert</h2>
 						<input class="form-control" type="text" ng-model="tupleToInsert"><br/>
 						<button class="btn btn-success" ng-click="insertTuple()">Insert</button>
+
+						<h2>Update</h2>
+						<input class="form-control" type="text" ng-model="updateValue"><br/>
+						<button class="btn btn-success" ng-click="update()">Update</button>
 					</div>
 				</div>
 
